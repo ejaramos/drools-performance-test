@@ -1,1 +1,0 @@
-# drools-performance-test

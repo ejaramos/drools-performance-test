@@ -1,0 +1,26 @@
+//created on: May 8, 2017
+package rules
+
+//list any import classes here.
+import com.sample.DataPacket;
+
+//import function com.sample.RulesRunner.Helper.log;
+
+//declare any global variables here
+global Integer Rule1_hits;
+	
+rule "Rule1"
+    when
+        //conditions
+        DataPacket( 
+        	category == 'A',
+        	gauss > 0.5,
+        	random > 5
+    	)     
+    then
+        //actions
+        Rule1_hits+=1;
+        System.out.println(drools.getRule().getName()+" Fired! Total Hits = "+Rule1_hits);
+
+end
+

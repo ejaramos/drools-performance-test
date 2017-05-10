@@ -8,14 +8,63 @@ import com.sample.DataPacket;
 
 //declare any global variables here
 global Integer Rule1_hits;
+
 	
+rule "Rule2c"
+    when
+        //conditions
+        $dp: DataPacket(
+        	category == 'B',
+        	gauss > 0.5,
+        	random > 5
+    	) &&
+    	$dp2: DataPacket(
+        	random3 > 25,
+        	random2 > 15,
+        	random4 > 35
+    	);
+    then
+        //actions
+        // Rule1_hits+=1;
+        System.out.println( $dp.toString() + "||" + $dp2.toString());
+        // System.out.println(drools.getMatch()+" Fired! Total Hits = "+Rule1_hits);
+        // System.out.println(drools.getWorkingMemory());
+        // System.out.println(drools.getTuple());
+        // System.out.println(drools.getMatch());
+        // System.out.println(drools.getChannels());
+        // System.out.println(drools.getIdentityMap());
+end
+
+/*
+
 rule "Rule1"
     when
         //conditions
         DataPacket( 
         	category == 'A',
         	gauss > 0.5,
-        	random > 5
+        	random > 5,
+        	
+    	)     
+    then
+        //actions
+        // Rule1_hits+=1;
+        System.out.println(drools.getRule().getName()+" Fired! Total Hits = "+Rule1_hits);
+        // System.out.println(drools.getWorkingMemory());
+        // System.out.println(drools.getTuple());
+        // System.out.println(drools.getMatch());
+        // System.out.println(drools.getChannels());
+        // System.out.println(drools.getIdentityMap());
+
+end
+
+rule "Rule1_sub"
+    when
+        //conditions
+        DataPacket( 
+        	random > 5,
+        	gauss > 0.5,
+        	category == 'A'
     	)     
     then
         //actions
@@ -23,4 +72,24 @@ rule "Rule1"
         System.out.println(drools.getRule().getName()+" Fired! Total Hits = "+Rule1_hits);
 
 end
+
+rule "Rule2"
+    when
+        //conditions
+        DataPacket( 
+        	
+        	gauss > 0.5,
+        	random > 5,
+        	category == 'B'
+        	
+    	)     
+    then
+        //actions
+        // Rule1_hits+=1;
+        System.out.println(drools.getRule().getName()+" Fired! Total Hits = "+Rule1_hits);
+
+end
+
+*/
+
 
